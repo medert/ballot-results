@@ -35,13 +35,17 @@ precincts.each do |precinct|
 end
 puts
   # 2) How many people voted in each precinct? Create a new hash where the keys name the precinct and the values start at 0. Iterate over the provided `vote_results` to update the totals.
-max = []
+precinct_results = []
 precincts.each do |precinct|
   sum = vote_results[precinct].each_value.reduce(:+)
   puts "#{precinct} had #{sum} votes"
-  max = sum if sum > max
+  precinct_results.push(sum)
 end
+puts
+
   # 3) Which precinct had the highest voter turnout? Use the hash you created in Question 2 to return the answer.
+max = precinct_results.max
+puts "Precinct #{precinct_results.index(max) + 1} had the most votes with #{max} votes"
 
   # 4) Output the total number of votes per candidate in the format seen above. Create a new hash where the keys name the candidate and the values start at 0. Iterate over the provided `vote_results` to update the totals.
 
