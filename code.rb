@@ -24,17 +24,23 @@ vote_results =
   }
 
   # 1) Generate the voting totals by Precinct and Candidate as shown in the directions.
-precinct = ["Precinct 1","Precinct 2","Precinct 3","Precinct 4"]
-candidate = ["Mary Sue","Sally Jane","Billy Joe"]
+precincts = ["Precinct 1","Precinct 2","Precinct 3","Precinct 4"]
+candidates = ["Mary Sue","Sally Jane","Billy Joe"]
 
-precinct.each do |precinct|
+precincts.each do |precinct|
   puts precinct
-  candidate.each do |candidate|
+  candidates.each do |candidate|
     puts "  -#{candidate} got #{vote_results[precinct][candidate]}"
   end
 end
+puts
   # 2) How many people voted in each precinct? Create a new hash where the keys name the precinct and the values start at 0. Iterate over the provided `vote_results` to update the totals.
-
+max = []
+precincts.each do |precinct|
+  sum = vote_results[precinct].each_value.reduce(:+)
+  puts "#{precinct} had #{sum} votes"
+  max = sum if sum > max
+end
   # 3) Which precinct had the highest voter turnout? Use the hash you created in Question 2 to return the answer.
 
   # 4) Output the total number of votes per candidate in the format seen above. Create a new hash where the keys name the candidate and the values start at 0. Iterate over the provided `vote_results` to update the totals.
