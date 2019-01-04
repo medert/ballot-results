@@ -85,5 +85,22 @@ end
 puts "In total, #{total_votes} people voted"
 
   # 7) Who won the election and how many votes did they get? Use the hash you created in Question 4 to return the answer.
-
+results.each do |k,v|
+  puts "#{k} had the most votes with #{v} votes" if v == results.max[1]
+end
+puts
   # 8) How many more votes did the winner have as compared to the third place candidate? Use the hash you created in Question 4 and the winning candidate total votes value from Question 7 to complete this question.
+winner = ""
+last = ""
+deff = 0
+results.each do |k,v|
+  case v
+  when results.values.max
+    winner = k
+  when results.values.min
+    last = k
+  end
+  deff = results.values.max - results.values.min
+end
+
+puts "#{winner} beat #{last} by #{deff} votes"
