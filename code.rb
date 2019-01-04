@@ -76,7 +76,14 @@ end
 puts
 
   # 6) How many people voted in total?
-vote_results
+total_votes = 0
+vote_results.each do |key,value|
+  value.each do |k,v|
+    total_votes += v
+  end
+end
+puts "In total, #{total_votes} people voted"
+
   # 7) Who won the election and how many votes did they get? Use the hash you created in Question 4 to return the answer.
 
   # 8) How many more votes did the winner have as compared to the third place candidate? Use the hash you created in Question 4 and the winning candidate total votes value from Question 7 to complete this question.
