@@ -64,11 +64,19 @@ vote_results.each do |key, value|
 end
 
 results.each {|key,value| puts "#{key} had #{value} votes"}
-
+puts
   # 5) Who was the winning candidate in Precinct 4 and how many votes did they get?
+vote_results.each do |key, value|
+  person = ''
+  if key == "Precinct 4"
+    value.each { |k, v| person = k if v == value.values.max }
+    puts "#{person} won Precinct 4 with #{value[person]} votes"
+  end
+end
+puts
 
   # 6) How many people voted in total?
-
+vote_results
   # 7) Who won the election and how many votes did they get? Use the hash you created in Question 4 to return the answer.
 
   # 8) How many more votes did the winner have as compared to the third place candidate? Use the hash you created in Question 4 and the winning candidate total votes value from Question 7 to complete this question.
